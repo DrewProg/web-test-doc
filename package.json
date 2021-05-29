@@ -1,0 +1,24 @@
+{
+  "name": "web-test-doc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DrewProg/web-test-doc.git"
+  },
+  "author": "Vedernikov Andrew",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DrewProg/web-test-doc/issues"
+  },
+  "homepage": "https://github.com/DrewProg/web-test-doc#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
+  }
+}

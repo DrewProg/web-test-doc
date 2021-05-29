@@ -4,3 +4,6 @@ build/Release
 # Dependency directories
 node_modules/
 jspm_packages/
+
+# React app dev directory
+views/react-app-dev/node_modules
