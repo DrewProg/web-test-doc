@@ -7,5 +7,8 @@
 - Frontend: React.js
 - DB: PostgreSQL
 
-Предварительная схема архитектуры
+Предварительная схема архитектуры:
 ![architecture_schema](/figure/architecture_schema.png "Схема архитектуры")
+
+Актуальная логическая схема БД:
+https://drive.google.com/file/d/1MU6eR53hcKwdtQLTESOTN70TSykz7gPy/view?usp=sharing
