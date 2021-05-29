@@ -11,4 +11,5 @@
 ![architecture_schema](/figure/architecture_schema.png "Схема архитектуры")
 
 Актуальная логическая схема БД:
+![logical_schema](https://drive.google.com/file/d/1MU6eR53hcKwdtQLTESOTN70TSykz7gPy/view?usp=sharing)
 https://drive.google.com/file/d/1MU6eR53hcKwdtQLTESOTN70TSykz7gPy/view?usp=sharing
