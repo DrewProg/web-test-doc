@@ -9,3 +9,5 @@ jspm_packages/
 views/react-app-dev/node_modules
 
 .env
+
+static
