@@ -1,8 +1,8 @@
 const { Document } = require("../models/models")
 
 exports.create = async (req, res) => {
-    const { name, description, docSetId } = req.body;
-    const doc = await Document.create({ name, description, docSetId });
+    const { docSetId } = req.body;
+    const doc = await Document.create({ docSetId });
     return res.json(doc);
 }
 

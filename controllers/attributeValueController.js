@@ -5,14 +5,15 @@ const ApiError = require('../error/ApiError');
 
 exports.create = async (req, res, next) => {
     try {
-        const { docId, attributeId, value } = req.body; // value - json
-        const { file } = req.files;
-        const values = value; //копируем json
-        console.log(file);
-        // let fileName = uuid.v4() + '.jpg';
-        // file.mv(path.resolve(__dirname, '..', 'static', fileName));
-        // values.file = fileName;  // добавляем путь к файлу 
-        const attributeValue = await AttributeValue.create({ docId, attributeId, values });
+        let { documentId, attributeId, value } = req.body; // value - json
+        if (req.files != null) {
+            if (value == null) value = {};
+            const { file } = req.files;
+            let fileName = uuid.v4() + '.jpg';
+            value.file = fileName;  // добавляем путь к файлу 
+            file.mv(path.resolve(__dirname, '..', 'static', fileName));
+        }
+        const attributeValue = await AttributeValue.create({ documentId, attributeId, value });
         return res.json(attributeValue);
     } catch (error) {
         next(ApiError.badRequest(error.message));
