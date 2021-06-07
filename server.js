@@ -1,28 +1,41 @@
+require('dotenv').config();
 const express = require('express');
-const port = 8080;
-const app = express();
+const sequelize = require('./config/db.config');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const fileUpload = require('express-fileupload');
+const models = require('./models/models');
+const router = require('./routes/index');
+const app = express();
+const PORT = process.env.PORT || 8080;
+const path = require('path');
+const errorHandler = require('./middlewares/ErrorHandlingMiddleware');
 
 let corsOptions = {
     origin: "http://localhost:8080"
-  };
-  
+};
+
 app.use(cors(corsOptions));
-  
 // parse requests of content-type - application/json
 app.use(bodyParser.json());
-
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
-  
-// simple route
-app.get("/", (req, res) => {
-    res.json({ message: "Hello!" });
-});
-  
-// set port, listen for requests
-const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}.`);
-});
+app.use(express.static(path.resolve(__dirname, 'static')));
+app.use(fileUpload({}));
+app.use('/api', router);
+app.use(errorHandler);
+
+const start = async () => {
+    try {
+        await sequelize.authenticate();
+        await sequelize.sync();
+        // set port, listen for requests
+        app.listen(PORT, () => {
+            console.log(`Server is running on port ${PORT}.`);
+        });
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+start();
