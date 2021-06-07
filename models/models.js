@@ -48,9 +48,7 @@ const Attribute = sequelize.define('attribute', {
 });
 
 const Document = sequelize.define('document', {
-    id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-    name: { type: DataTypes.TEXT, unique: true, allowNull: false },
-    description: { type: DataTypes.TEXT }
+    id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true }
 });
 
 const AttributeValue = sequelize.define('attribute_value', {
