@@ -12,9 +12,13 @@
 - "sequelize" - ORM 
 - "uuid" - генерация уникальных id для именования файлов на сервере
 
-Предварительная схема архитектуры:
+Предварительная схема клиентской части архитектуры:
 
-![architecture_schema](/figure/architecture_schema.png "Схема архитектуры")
+![architecture_schema](/figure/ClientSideDiagramm.png "Схема архитектуры")
+
+Предварительная схема серверной части архитектуры:
+
+![serverside_schema](/figure/ServerSideDiagramm.png "Схема серверной архитектуры")
 
 Актуальная логическая схема БД:
 
