@@ -12,5 +12,7 @@ exports.getAll = async (req, res) => {
 }
 
 exports.getOne = async (req, res) => {
-
+    const { id } = req.params;
+    const attribute = await Attribute.findOne({ where: { id } });
+    return res.json(attribute);
 }
