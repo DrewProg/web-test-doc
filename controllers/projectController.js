@@ -1,8 +1,8 @@
-const {Project} = require('../models/models');
+const { Project } = require('../models/models');
 
 exports.create = async (req, res) => {
-    const {name, description, groupOfUserId} = req.body;
-    const project = await Project.create({name, description, groupOfUserId});
+    const { name, description } = req.body;
+    const project = await Project.create({ name, description });
     return res.json(project);
 }
 
