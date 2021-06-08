@@ -6,11 +6,15 @@
 - Backend: Node.js Express
 - Frontend: React.js
 - DB: PostgreSQL
+- "dotenv" - переменные окружения
+- "express-fileupload" - загрузка файлов на сервер
+- "jsonwebtoken" - генерация JWT 
+- "sequelize" - ORM 
+- "uuid" - генерация уникальных id для именования файлов на сервере
 
 Предварительная схема архитектуры:
 
 ![architecture_schema](/figure/architecture_schema.png "Схема архитектуры")
-
 
 Актуальная логическая схема БД:
 
@@ -23,6 +27,9 @@ https://drive.google.com/file/d/1W4h-VFuiDJ0_2QRXt3HaBl5ZtsKMarp6/view?usp=shari
 Актуальная Use Case диаграмма:
 
 https://drive.google.com/file/d/1FK2O3TtplfR0NXfIZy9UYcJ00FeeQgdx/view?usp=sharing
+
+Второстепенные задачи:
+- Полноценная валидация nickname и password на сервере
 
 UPD 29.05.2021:
 - Создан "каркас" приложения: React, Node.js Express
