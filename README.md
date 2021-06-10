@@ -9,8 +9,8 @@
 - DB: PostgreSQL
 - "dotenv" - переменные окружения
 - "express-fileupload" - загрузка файлов на сервер
-- "jsonwebtoken" - генерация JWT 
-- "sequelize" - ORM 
+- "jsonwebtoken" - генерация JWT
+- "sequelize" - ORM
 - "uuid" - генерация уникальных id для именования файлов на сервере
 
 Предварительная схема клиентской части архитектуры:
