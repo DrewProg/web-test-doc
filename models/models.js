@@ -4,8 +4,10 @@ const { DataTypes } = require('sequelize');
 const Post = sequelize.define('post', {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     name: { type: DataTypes.TEXT, allowNull: false },
-    access_level: { type: DataTypes.INTEGER, defaultValue: 1 }
+    role: { type: DataTypes.TEXT, defaultValue: "USER" }
 });
+
+const User_Post = sequelize.define('user_post', {});
 
 const User = sequelize.define('user', {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
@@ -56,8 +58,40 @@ const AttributeValue = sequelize.define('attribute_value', {
     value: { type: DataTypes.JSON },
 });
 
-Post.hasMany(User);
-User.belongsTo(Post);
+const LifeCycle = sequelize.define('life_cycle', {
+    id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+    name: { type: DataTypes.TEXT, allowNull: false },
+    description: { type: DataTypes.TEXT }
+})
+
+const LifeCycleStatus = sequelize.define('life_cycle_status', {
+    id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+    prestatus_ids: { type: DataTypes.TEXT, allowNull: false },
+    description: { type: DataTypes.TEXT }
+})
+
+const Status_Doc = sequelize.define('status_doc', {
+    id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+})
+
+const User_Status = sequelize.define('user_status', {
+    id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+})
+
+const StatusHistory = sequelize.define('status_history', {
+    id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+    description: { type: DataTypes.TEXT }
+}, {
+    timestamps: true,
+    createdAt: true,
+    updatedAt: false
+})
+
+Post.hasMany(User_Post);
+User_Post.belongsTo(Post);
+
+User.hasMany(User_Post);
+User_Post.belongsTo(User);
 
 User.hasMany(User_Project);
 User_Project.belongsTo(User);
@@ -92,9 +126,32 @@ Set_Attribute.belongsTo(Attribute);
 Attribute.hasMany(AttributeValue);
 AttributeValue.belongsTo(Attribute);
 
+LifeCycle.hasMany(DocSet);
+DocSet.belongsTo(LifeCycle);
+
+LifeCycle.hasMany(LifeCycleStatus);
+LifeCycleStatus.belongsTo(LifeCycle);
+
+LifeCycleStatus.hasMany(Status_Doc);
+Status_Doc.belongsTo(LifeCycleStatus);
+
+LifeCycleStatus.hasMany(StatusHistory);
+StatusHistory.belongsTo(LifeCycleStatus);
+
+User.hasMany(User_Status);
+User_Status.belongsTo(User);
+
+Status_Doc.hasMany(User_Status);
+User_Status.belongsTo(Status_Doc);
+
+Status_Doc.hasOne(Document);
+Document.belongsTo(Status_Doc);
+
+
 module.exports = {
     Post,
     User,
+    User_Post,
     User_Project,
     Project,
     DocSet,
@@ -103,5 +160,10 @@ module.exports = {
     Type_Attribute,
     Attribute,
     Document,
-    AttributeValue
+    AttributeValue,
+    LifeCycle,
+    LifeCycleStatus,
+    Status_Doc,
+    User_Status,
+    StatusHistory
 }
