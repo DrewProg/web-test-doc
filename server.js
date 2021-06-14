@@ -12,7 +12,8 @@ const path = require('path');
 const errorHandler = require('./middlewares/ErrorHandlingMiddleware');
 
 let corsOptions = {
-    origin: "http://localhost:8080"
+    origin: ['http://localhost:8080', 'http://localhost:3000'],
+    credentials: true
 };
 
 app.use(cors(corsOptions));
