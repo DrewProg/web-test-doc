@@ -1,8 +1,8 @@
 const { Post } = require("../models/models");
 
 exports.create = async (req, res) => {
-    const {name, access_level} = req.body;
-    const post = await Post.create({name, access_level});
+    const {name, role} = req.body;
+    const post = await Post.create({name, role});
     return res.json(post);
 }
 
